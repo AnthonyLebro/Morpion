@@ -6,7 +6,7 @@ class Game
     @board = Board.new 
   end
   
-  def players()
+  def players() #methode qui dertermine l'identité des joueurs
     2.times do |i|
       puts "---------------------------------------"
       puts "\033[1;32mSalut joueur#{i+1} choisis ton nom :"+"\033[0m"
@@ -21,7 +21,7 @@ class Game
     end
   end
 
-  def choose_case(player)
+  def choose_case(player) #methode qui permet au joueur de choisir l'emplacement qu'il souhaite jouer
     @board.play_turn(player)
     @board.game_nil
     if @board.winner == true
@@ -68,16 +68,16 @@ class Game
     end
   end
 
-  def start 
+  def start #welcome les loulous
     puts ""
     puts "\033[3;35m---------------------------------------"
     puts "            Welcome to "
     puts "         The Morpion Game         "
     puts "---------------------------------------"+"\033[0m"
-    puts "created by Antho Pascaline & Xabi  🤟"
+    puts "->Created by Xabi Pascaline & Antho🤟<-"
   end
 
-  def perform_restart
+  def perform_restart #methode qui remte la grille a zero
     @board = Board.new 
     start()
     sleep 2 

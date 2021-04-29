@@ -1,14 +1,14 @@
 class Board
   attr_accessor :array_cases, :winner, :game_nil_variable
  
-  def initialize
+  def initialize  #Methode qui crée un tableau pour y affecter des cases vides.
     @array_cases      = []
     create_case
     @winner = false
     @game_nil_variable = 0
   end
 
-  def create_case
+  def create_case #défini des cases vides en string dans le tableau
     @array_cases << BoardCase.new("a1")
     @array_cases << BoardCase.new("a2")
     @array_cases << BoardCase.new("a3")
@@ -20,7 +20,7 @@ class Board
     @array_cases << BoardCase.new("c3")
   end
 
-  def play_turn(player)
+  def play_turn(player)#méthodes qui gere les tours des joueurs
     system('clear')
     display()
     puts "\033[1;32mC'est ton tour #{player.player}. Que veux-tu jouer ?"+"\033[0m"
@@ -36,11 +36,11 @@ class Board
     end
   end 
 
-  def game_nil
+  def game_nil #Methode qui défini une partie nulle
     puts @game_nil_variable = @game_nil_variable + 1
   end
 
-  def victory(player)
+  def victory(player) #Methode qui permet de definir les scénarios de victoire
     if @array_cases[0].case == "X" && @array_cases[1].case == "X" &&@array_cases[2].case == "X" || @array_cases[0].case == "O" && @array_cases[1].case == "O" && @array_cases[2].case == "O"
       @winner = true
     elsif @array_cases[3].case == "X" && @array_cases[4].case == "X" && @array_cases[5].case == "X" || @array_cases[3].case == "O"  && @array_cases[4].case == "O" && @array_cases[5].case == "O"
@@ -60,7 +60,7 @@ class Board
     end
   end
 
-  def display 
+  def display #méthode qui permet de gerer l'affichage de la grille
     puts "       1         2         3     "
   puts " \033[1;35m -------------------------------"+"\033[0m"
   puts " \033[1;35m |         |         |         |"+"\033[0m"
